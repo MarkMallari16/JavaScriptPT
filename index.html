@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mean,Median,Mode,Range</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="icon" href="assets/chart.png">
+</head>
+
+<body>
+    <nav class="nav-section">
+        <div class="nav-header">
+            <a href="#"> <img src="/assets/chart.png" alt="image" class="logo"></a>
+            <h2 class="logo-text">mm<span>mr</span></h2>
+        </div>
+        <div class="links-container">
+            <ul class="links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="child child1">
+            <div class="main">
+                <div class="image-container">
+                    <img src="/assets/chart.png" alt="image" class="chart-image">
+                </div>
+                <div class="text">
+                    <div class="header-text"> Mean,Median,Mode,Range Calculator</div>
+                    <div class="sub-text">
+                        This is simple Mean, Median, Mode, and Range Calculator created by Mark Christian Mallari
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="child child2">
+            <div class="input-section">
+                <div class="field-container">
+                    <label for="inputField">Enter Data</label>
+                    <div class="field-sub-text sub-text">Please provide numbers separated by comma or space to
+                        calculate.</div>
+                    <div class="invalid-input" id="errorMessage"></div>
+
+                    <input type="text" id="inputField" placeholder="Enter your data here eg: 25,43,23,1,24,18">
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="btn calculateBtn" id="calculateBtn">Calculate</button>
+                    <button type="submit" class="btn clearBtn" id="clearBtn" onclick="clearBtn()">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="child result">
+            <div class="result-header">
+
+            </div>
+        </div>
+        <div class="child chart-container">
+            <canvas class="myChart" id="myChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
