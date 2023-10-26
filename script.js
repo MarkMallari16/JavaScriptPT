@@ -12,15 +12,22 @@ const chartResultContainer = document.querySelector(".chart-container");
 
 let myChart = null;
 
-
-
-
+//add click event listener for calculateBtn 
 calculateBtn.addEventListener("click", event => {
     event.preventDefault();
-    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
-    // console.log(splitNumber);
 
+    calculate();
+
+})
+inputField.addEventListener("keydown", handleEnterKeyEvent);
+function handleEnterKeyEvent(event) {
+    if (event.key === "Enter") {
+        calculate();
+    }
+}
+function calculate() {
     const isValid = checkInput();
+    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
 
     if (isValid) {
         displayResult(splitNumber);
@@ -28,8 +35,8 @@ calculateBtn.addEventListener("click", event => {
         displayChartResult(splitNumber);
         chartResultContainer.classList.add("show-result");
     }
-
-})
+}
+//display chart result
 function displayChartResult(arr) {
     const ctx = document.getElementById('myChart');
     const frequencyMap = {};
@@ -42,7 +49,7 @@ function displayChartResult(arr) {
         frequencyMap[num] = (frequencyMap[num] || 0) + 1;
     });
 
-    const labels = Object.keys(frequencyMap);
+    const labels = Array.from({ length: arr.length }, (_, index) => (index + 1).toString());
     const data = [...arr];
 
     myChart = new Chart(ctx, {
@@ -50,7 +57,7 @@ function displayChartResult(arr) {
         data: {
             labels: labels,
             datasets: [{
-                label: 'Frequency',
+                label: 'Number of data',
                 data: data,
                 borderWidth: 1,
 
@@ -59,6 +66,7 @@ function displayChartResult(arr) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: true,
             scales: {
                 y: {
                     beginAtZero: true
@@ -75,10 +83,11 @@ function checkInput() {
     //this will converted into array
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
-    const validInputPattern = /^[,0-9\s]+$/
+    const validInputPattern = /^[,\d.\s]+$/
 
     let isValid = true;
 
+    //set error message to please provide input
     if (!inputField.value) {
         errorMessage.textContent = "Please provide input.";
         errorMessage.classList.add("show-error");
@@ -104,11 +113,11 @@ function displayResult(splitNumberArr) {
     resultContainer.innerHTML = '';
     const allResult = document.createElement("div");
     allResult.innerHTML = `
-    <h1>Result:</h1>
-    <p>Mean: ${getMean(splitNumberArr)}</p>
-    <p>Median: ${getMedian(splitNumberArr)}</p>
-    <p>Mode: ${getMode(splitNumberArr)}</p>
-    <p>Range: ${getRange(splitNumberArr)}</p>
+    <h1 class='skeleton'>Result:</h1>
+    <p class='text-result skeleton'>Mean: ${getMean(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Median: ${getMedian(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Mode: ${getMode(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Range: ${getRange(splitNumberArr)}</p>
     `;
     resultContainer.classList.add("show-result");
     resultContainer.appendChild(allResult);
@@ -130,6 +139,7 @@ function getMean(nums) {
 
     return formattedNums;
 }
+
 function getMedian(nums) {
     const sortedNums = nums.sort((num1, num2) => num1 - num2);
     const length = sortedNums.length;

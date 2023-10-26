@@ -8,12 +8,10 @@
 }
 
 .nav-section {
-
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
     display: flex;
     justify-content: space-between;
-    padding: 14px 6rem;
+    padding: 14px 12rem;
     margin: 0 auto;
 }
 
@@ -29,9 +27,12 @@
 .logo-text {
     font-size: 2.5rem;
     text-transform: uppercase;
-    margin-left:10px;
-    border-bottom: 4px solid var(--accent);
-   
+    margin-left: 10px;
+
+}
+
+.highlighted-text {
+    color: var(--accent);
 }
 
 .links-container {
@@ -42,7 +43,7 @@
 .links {
     display: flex;
     list-style-type: none;
-    gap: 16px;
+    
 }
 
 .links li a {
@@ -57,7 +58,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .nav-section{
+    .nav-section {
         padding: 14px 20px;
     }
 }

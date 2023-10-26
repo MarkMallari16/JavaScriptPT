@@ -44,16 +44,16 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-
     margin-bottom: 12px;
 }
 
 .header-text {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, -0.375rem + 6vw, 2.5rem);
     font-weight: bold;
     border-bottom: 4px solid var(--accent);
     border-width: 6px;
     margin-bottom: 6px;
+  
 }
 
 .sub-text {
@@ -65,18 +65,19 @@ body {
 .chart-image {
     width: 100%;
     max-width: 140px;
+
 }
 
 .child2 {
-
     display: flex;
     flex-direction: column;
-
 }
 
 .field-sub-text {
     font-size: 14px;
+    margin-top: 2px;
     margin-bottom: 12px;
+    width: 60%;
 }
 
 .input-section input[type="text"] {
@@ -86,11 +87,11 @@ body {
     max-width: 1200px !important;
     border-radius: 4px;
     outline: none;
-    border: 2px solid var(--background);
+    border: 3px solid var(--background);
 }
 
 .input-section input[type="text"]:focus {
-    border: 2px solid var(--accent);
+    border: 3px solid var(--accent);
 }
 
 .invalid-input {
@@ -143,13 +144,20 @@ body {
 .result {
     display: none;
 }
-
+.text-result{
+    margin-top: 10px;
+}
 .chart-container {
     display: none;
+
 }
 
 .show-result {
     display: block;
+}
+
+.hide-element {
+   display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -160,9 +168,19 @@ body {
     .input-section input[type="text"] {
         width: 100%;
         max-width: 900px;
+        margin-top: 20px;
     }
 
     .chart-image {
         display: none;
+    }
+
+    .chart-image-loader {
+        display: none;
+    }
+
+    .chart {
+        width: 100%;
+        height: auto;
     }
 }
