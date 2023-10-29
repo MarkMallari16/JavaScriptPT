@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@300;500;700;900&display=swap');
 
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+
+}
+
+@font-face {
+    font-family: NewakeFont;
+    src: url(/fonts/NewakeFont-Demo.woff);
+    font-weight: bold;
 }
 
 :root {
@@ -14,10 +22,13 @@
     --background: #374150;
     --accent: #2790E9;
     --error-text-color: #e11d48;
+    --text-font: Poppins, sans-serif;
+    --header-font: NewakeFont, sans-serif;
 }
 
 body {
     background-color: var(--body-background);
+    font-family: var(--text-font) !important;
 }
 
 .container {
@@ -52,11 +63,13 @@ body {
     font-weight: bold;
     border-bottom: 4px solid var(--accent);
     border-width: 6px;
-    margin-bottom: 6px;
-  
+    font-family: "NewakeFont", sans-serif;
+    letter-spacing: 2px;
+   
 }
 
 .sub-text {
+    display: block;
     font-weight: 300;
     font-size: 14px;
     color: var(--text-secondary-color);
@@ -78,6 +91,10 @@ body {
     margin-top: 2px;
     margin-bottom: 12px;
     width: 60%;
+}
+
+.input-section {
+    position: relative;
 }
 
 .input-section input[type="text"] {
@@ -109,9 +126,12 @@ body {
 }
 
 .btn {
-    font-weight: bold;
+    font-family: 'poppins', sans-serif;
+    font-weight: 800;
+
     padding: 10px 24px;
     cursor: pointer;
+    border: 2px solid var(--background);
     border-radius: 4px;
     outline: none;
     transition: all 0.3s ease;
@@ -121,7 +141,7 @@ body {
     color: var(--text-color);
     background-color: var(--accent);
     outline: none;
-    border: 1px solid var(--background);
+
     margin-right: 4px;
 }
 
@@ -130,23 +150,38 @@ body {
 }
 
 .clearBtn {
-    outline: none;
-    border: 1px solid var(--background);
     margin-right: 4px;
-    outline: none;
+ 
 }
 
 .clearBtn:hover {
     color: var(--text-color);
-    background-color: var(--accent);
+    background-color: var(--background);
 }
 
 .result {
     display: none;
+    padding: 24px;
 }
-.text-result{
-    margin-top: 10px;
+
+.result-container {
+
+    color: var(--text-color);
+    background-color: var(--background);
+    padding: 12px 20px;
+    border-radius: 4px;
 }
+
+.result-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-result {
+    margin-top: 6px;
+}
+
 .chart-container {
     display: none;
 
@@ -156,8 +191,21 @@ body {
     display: block;
 }
 
-.hide-element {
-   display: none;
+.clipboard {
+    padding: 10px 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.clipboard:hover {
+    color: var(--text-color);
+    background-color: var(--accent);
+}
+
+.clipboard-icon {
+    font-size: 1.1rem;
 }
 
 @media screen and (max-width: 768px) {

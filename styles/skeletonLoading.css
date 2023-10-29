@@ -1,0 +1,82 @@
+:root {
+    --container-loading-bg: #F1F2F3;
+}
+
+
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 6px;
+    color: transparent !important;
+    user-select: none !important;
+}
+
+.skeleton-container {
+    animation: skeleton-loading-container 1s linear infinite alternate;
+}
+
+.text-skeleton {
+    border: none;
+}
+
+.sub-text-skeleton {
+    margin-top: 6px;
+}
+
+.skeleton-input {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    border: none !important;
+    outline: none !important;
+
+    cursor: auto !important;
+}
+
+.skeleton-button {
+    padding: 10px 24px;
+    border: none;
+    user-select: none;
+    cursor: default;
+
+}
+
+.skeleton-input::placeholder {
+    color: transparent;
+}
+
+.hide-on-load {
+    visibility: hidden;
+}
+
+.chart-image-hide {
+    visibility: hidden;
+}
+
+.show-on-load {
+    visibility: visible;
+}
+
+@keyframes skeleton-loading-container {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+
+    50% {
+        background-color: hsl(200, 20%, 86%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 90%);
+    }
+
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 95%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}

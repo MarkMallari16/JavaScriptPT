@@ -7,34 +7,38 @@ let inputField = document.getElementById("inputField");
 const calculateBtn = document.getElementById("calculateBtn");
 //this will display all result 
 
+//getting the element class 
 const resultContainer = document.querySelector(".result");
 const chartResultContainer = document.querySelector(".chart-container");
 
+//initialize myChart to null 
 let myChart = null;
 
 //add click event listener for calculateBtn 
 calculateBtn.addEventListener("click", event => {
     event.preventDefault();
-
+    console.log("click");
     calculate();
 
 })
+//users can enter key in keyboard to calculate the result
 inputField.addEventListener("keydown", handleEnterKeyEvent);
 function handleEnterKeyEvent(event) {
     if (event.key === "Enter") {
         calculate();
     }
 }
+//main function 
 function calculate() {
     const isValid = checkInput();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
 
     if (isValid) {
         displayResult(splitNumber);
-
         displayChartResult(splitNumber);
         chartResultContainer.classList.add("show-result");
     }
+
 }
 //display chart result
 function displayChartResult(arr) {
@@ -76,6 +80,7 @@ function displayChartResult(arr) {
     });
 
 }
+//check possible errors
 function checkInput() {
     //getting the error message element
 
@@ -108,29 +113,52 @@ function checkInput() {
 
     return isValid;
 }
+//display the result
 function displayResult(splitNumberArr) {
     //clear the current result
     resultContainer.innerHTML = '';
+
     const allResult = document.createElement("div");
+
+    allResult.classList.add("result-container");
+
     allResult.innerHTML = `
-    <h1 class='skeleton'>Result:</h1>
-    <p class='text-result skeleton'>Mean: ${getMean(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Median: ${getMedian(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Mode: ${getMode(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Range: ${getRange(splitNumberArr)}</p>
+    <div class="result-header-container">
+        <h1 class=''>Result:</h1>
+        <button class="clipboard" id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)"><i class="clipboard-icon fa-regular fa-clipboard"></i></button>
+    </div>
+    <p class='text-result '>Mean: ${getMean(splitNumberArr)}</p>
+    <p class='text-result '>Median: ${getMedian(splitNumberArr)}</p>
+    <p class='text-result '>Mode: ${getMode(splitNumberArr)}</p>
+    <p class='text-result '>Range: ${getRange(splitNumberArr)}</p>
+    <p class='text-result '>Smallest: ${getMin(splitNumberArr)}</p>
+    <p class='text-result '>Largest: ${getMax(splitNumberArr)}</p>
+    <p class='text-result '>Count: ${getCount(splitNumberArr)}</p>
     `;
     resultContainer.classList.add("show-result");
     resultContainer.appendChild(allResult);
 }
+//this will clear all results and also in input
 function clearBtn() {
     const chartContainer = document.querySelector(".chart-container");
 
     inputField.value = "";
     resultContainer.classList.remove("show-result");
     chartContainer.classList.remove("show-result");
-
 }
 
+function copyClipboard(text) {
+    const trimmedText = text.trim();
+    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
+
+    navigator.clipboard.writeText(`Datasets: ${splitNumber} ${trimmedText}`)
+        .then(() => {
+            alert("Text successfully copied!");
+        })
+        .catch(err => {
+            console.err("Failed to copy text: ", err);
+        });
+}
 function getMean(nums) {
     const sum = nums.reduce((acc, num) => acc + num, 0);
     const average = sum / nums.length;
@@ -150,28 +178,50 @@ function getMedian(nums) {
         : sortedNums[middleIndex];
 }
 function getMode(nums) {
-    const frequencyMap = {};
-
-    nums.forEach(num => {
-        frequencyMap[num] = (frequencyMap[num] || 0) + 1;
-    });
-
-    let mode = [];
+    let frequencyMap = {};
     let maxFrequency = 0;
+    let mode = [];
+
+    nums.forEach(element => {
+        if (frequencyMap[element] === undefined) {
+            frequencyMap[element] = 0;
+        }
+        frequencyMap[element] += 1;
+    });
 
     for (let num in frequencyMap) {
         if (frequencyMap[num] > maxFrequency) {
-            mode = [parseInt(num)];
+            mode = [parseFloat(num)];
             maxFrequency = frequencyMap[num];
         } else if (frequencyMap[num] === maxFrequency) {
-            mode.push(parseInt(num));
+            mode.push(parseFloat(num));
         }
+
     }
     if (mode.length === Object.keys(frequencyMap).length) {
-        return "No mode";
+        return "No mode"
     }
-
     return mode.join(", ");
+    // nums.forEach(num => {
+    //     frequencyMap[num] = (frequencyMap[num] || 0) + 1;
+    // });
+
+    // let mode = [];
+    // let maxFrequency = 0;
+
+    // for (let num in frequencyMap) {
+    //     if (frequencyMap[num] > maxFrequency) {
+    //         mode = [parseInt(num)];
+    //         maxFrequency = frequencyMap[num];
+    //     } else if (frequencyMap[num] === maxFrequency) {
+    //         mode.push(parseInt(num));
+    //     }
+    // }
+    // if (mode.length === Object.keys(frequencyMap).length) {
+    //     return "No mode";
+    // }
+
+    // return mode.join(", ");
 }
 function getRange(nums) {
 
@@ -179,5 +229,20 @@ function getRange(nums) {
     const max = Math.max(...nums);
 
     return max - min;
+}
+function getMin(nums) {
+    const min = Math.min(...nums);
+
+    return min;
+}
+function getMax(nums) {
+    const max = Math.max(...nums);
+
+    return max;
+}
+function getCount(nums) {
+    const length = nums.length;
+
+    return length;
 }
 
