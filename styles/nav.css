@@ -68,6 +68,11 @@ a {
     color: var(--accent);
 }
 
+.link-skeleton{
+    user-select: none;
+    cursor: default;
+    
+}
 @media screen and (max-width: 768px) {
     .nav-section {
         padding: 14px 20px;

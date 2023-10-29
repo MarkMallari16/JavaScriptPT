@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/styles/nav.css">
     <link rel="icon" href="assets/chart.png">
     <link rel="stylesheet" href="/styles/skeletonLoading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
         </div>
         <div class="links-container">
             <ul class="links">
-                <li><a href="/index.html" class="skeleton  active">Home</a></li>
+                <li><a href="/index.html" class="skeleton link-skeleton active">Home</a></li>
 
             </ul>
         </div>
@@ -33,7 +35,7 @@
     <!--container-->
     <div class="container">
         <!--title section-->
-        <div class="child child1 skeleton-container">
+        <div class=" child child1 skeleton-container">
             <div class="main">
                 <div class="image-container skeleton ">
                     <img src="/assets/chart.png" alt="image" class="chart-image skeleton chart-image-hide">
@@ -44,7 +46,8 @@
                             class="highlighted-text skeleton">,</span>Range Calculator
                     </div>
                     <div class="sub-text skeleton sub-text-skeleton ">
-                        This is simple Mean, Median, Mode, and Range Calculator created by Mark Mallari
+                        Explore data effortlessly with our Calculator! Find mean, median, mode, and range in a snap.
+                        Simplifying statistics for you!
                     </div>
                 </div>
             </div>
@@ -56,7 +59,7 @@
                     <label for="inputField" class="skeleton text-skeleton ">Enter Data</label>
                     <div class="field-sub-text sub-text skeleton text-skeleton ">Please provide numbers
                         separated by comma or space to
-                        calculate.</div>
+                        calculate. Maximum: 20</div>
                     <div class="invalid-input" id="errorMessage"></div>
 
                     <div>
@@ -83,7 +86,9 @@
             <canvas class="myChart" id="myChart"></canvas>
         </div>
     </div>
-
+    <footer class="footer">
+        <p class="footer-text">Created by: Mark Christian Mallari</p>
+    </footer>
     <!--scripts-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts/script.js"></script>

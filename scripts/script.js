@@ -33,11 +33,12 @@ function handleEnterKeyEvent(event) {
 //main function 
 function calculate() {
     const isValid = checkInput();
-    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
+    const splitNumbers = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
+
 
     if (isValid) {
-        displayResult(splitNumber);
-        displayChartResult(splitNumber);
+        displayResult(splitNumbers);
+        displayChartResult(splitNumbers);
         chartResultContainer.classList.add("show-result");
     }
 
@@ -84,9 +85,11 @@ function checkInput() {
 
     const errorMessage = document.getElementById("errorMessage");
     //this will converted into array
-    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '');
+    const splitNumbers = inputField.value.split(/[,\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
     const validInputPattern = /^[,\d.\s]+$/
+
+    const validNumbers = splitNumbers.filter(num => !isNaN(num));
 
     let isValid = true;
 
@@ -99,8 +102,12 @@ function checkInput() {
         errorMessage.textContent = "Invalid input! Please provide number only.";
         errorMessage.classList.add("show-error");
         isValid = false;
-    } else if (splitNumber.length < 3) {
-        errorMessage.textContent = "Please provide numbers atleast 3 or more.";
+    } else if (validNumbers.length > 30) {
+        errorMessage.textContent = "Maximum of 30 sets of numbers are allowed.";
+        errorMessage.classList.add("show-error");
+        isValid = false;
+    } else if (validNumbers.length < 2) {
+        errorMessage.textContent = "Please provide numbers atleast 2 or more.";
         errorMessage.classList.add("show-error");
         isValid = false;
     } else {
@@ -117,10 +124,26 @@ function displayResult(splitNumberArr) {
     //clear the current result
     resultContainer.innerHTML = '';
 
+
+    // const meanResult = document.createElement("div");
+    // meanResult.classList.add("result-container")
+    // meanResult.innerHTML = `
+    // <p>The mean of a data set is commonly known as the average. You find the mean by taking the sum of all the data values and dividing that sum by the total number of data values. The formula for the mean of a population is</p>
+    // <div class="result-header-container">
+
+    //     <p>Mean: ${getMean(splitNumberArr)}</p>
+    //     <button class="clipboard " id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
+    //             <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
+    //     </button>
+    // </div>`
+
+    // resultContainer.classList.add("show-result");
+    // resultContainer.appendChild(meanResult);
+
+
     const allResult = document.createElement("div");
 
     allResult.classList.add("result-container");
-
 
 
     allResult.innerHTML = `
@@ -128,7 +151,7 @@ function displayResult(splitNumberArr) {
         <h1>Result:</h1>
         <button class="clipboard " id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
             <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
-           
+
         </button>
     </div>
     <p class='text-result'>Mean: ${getMean(splitNumberArr)}</p>

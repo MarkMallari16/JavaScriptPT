@@ -209,7 +209,12 @@ body {
 }
 
 
-
+.footer{
+    margin-top: 20px;
+    color: var(--text-secondary-color);
+    font-weight: 300;
+    text-align: center;
+}
 
 @media screen and (max-width: 768px) {
     .header .text {
