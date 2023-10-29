@@ -84,7 +84,7 @@ function checkInput() {
 
     const errorMessage = document.getElementById("errorMessage");
     //this will converted into array
-    const splitNumber = inputField.value.split(/[,.\s]+/).filter(num => num !== '');
+    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
     const validInputPattern = /^[,\d.\s]+$/
 
@@ -112,9 +112,6 @@ function checkInput() {
     return isValid;
 }
 
-
-
-
 //display the result
 function displayResult(splitNumberArr) {
     //clear the current result
@@ -124,23 +121,24 @@ function displayResult(splitNumberArr) {
 
     allResult.classList.add("result-container");
 
-    allResult.classList.add("skeleton-container");
+
 
     allResult.innerHTML = `
-    <div class="result-header-container skeleton-container">
-        <h1 class="skeleton">Result:</h1>
-        <button class="clipboard skeleton" id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
+    <div class="result-header-container ">
+        <h1>Result:</h1>
+        <button class="clipboard " id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
             <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
            
         </button>
     </div>
-    <p class='text-result skeleton'>Mean: ${getMean(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Median: ${getMedian(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Mode: ${getMode(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Range: ${getRange(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Smallest: ${getMin(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Largest: ${getMax(splitNumberArr)}</p>
-    <p class='text-result skeleton'>Count: ${getCount(splitNumberArr)}</p>
+    <p class='text-result'>Mean: ${getMean(splitNumberArr)}</p>
+    <p class='text-result'>Median: ${getMedian(splitNumberArr)}</p>
+    <p class='text-result'>Mode: ${getMode(splitNumberArr)}</p>
+    <p class='text-result'>Range: ${getRange(splitNumberArr)}</p>
+    <p class='text-result'>Sum: ${getSum(splitNumberArr)}</p>
+    <p class='text-result'>Smallest: ${getMin(splitNumberArr)}</p>
+    <p class='text-result'>Largest: ${getMax(splitNumberArr)}</p>
+    <p class='text-result'>Count: ${getCount(splitNumberArr)}</p>
     `;
     resultContainer.classList.add("show-result");
     resultContainer.appendChild(allResult);
@@ -154,21 +152,17 @@ function clearBtn() {
     chartContainer.classList.remove("show-result");
 }
 
-function copyClipboard(text) {
-
+async function copyClipboard(text) {
     const trimmedText = text.trim();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
 
+    try {
+        await navigator.clipboard.writeText(`Datasets: ${splitNumber} ${trimmedText}`)
+        alert("Text successfully copied!");
 
-
-    navigator.clipboard.writeText(`Datasets: ${splitNumber} ${trimmedText}`)
-        .then(() => {
-            alert("Text successfully copied!");
-
-        })
-        .catch(err => {
-            console.err("Failed to copy text: ", err);
-        });
+    } catch (err) {
+        console.err("Failed to copy text: ", err);
+    }
 }
 function getMean(nums) {
     const sum = nums.reduce((acc, num) => acc + num, 0);
@@ -240,6 +234,11 @@ function getRange(nums) {
     const max = Math.max(...nums);
 
     return max - min;
+}
+function getSum(nums) {
+    let sum = nums.reduce((acc, num) => acc + num, 0);
+
+    return sum;
 }
 function getMin(nums) {
     const min = Math.min(...nums);

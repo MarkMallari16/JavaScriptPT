@@ -5,11 +5,11 @@
     --text-color: #fff;
     --background: #374150;
     --accent: #2790E9;
-   
+
 }
 
 .nav-section {
-    background-color: var(--nav-bg);
+    
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     display: flex;
     justify-content: space-between;
@@ -25,16 +25,21 @@
 .logo {
     width: 60px
 }
-a{
+
+a {
     text-decoration: none;
     color: #000;
+}
+.active{
+    color: var(--accent) !important;
+    font-weight: 700;
 }
 .logo-text {
     font-size: 2.3rem;
     text-transform: uppercase;
-    margin-left: 10px;
+    margin-left: 6px;
     font-family: "NewakeFont", sans-serif;
-    
+
 }
 
 .highlighted-text {
