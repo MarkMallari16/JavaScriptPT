@@ -2,7 +2,6 @@
     --container-loading-bg: #F1F2F3;
 }
 
-
 .skeleton {
     animation: skeleton-loading 1s linear infinite alternate;
     border-radius: 6px;

@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Roboto:wght@300;500;700;900&display=swap');
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -65,10 +63,11 @@ body {
     border-width: 6px;
     font-family: "NewakeFont", sans-serif;
     letter-spacing: 2px;
-   
+
 }
 
 .sub-text {
+    margin-top: 6px;
     display: block;
     font-weight: 300;
     font-size: 14px;
@@ -126,9 +125,9 @@ body {
 }
 
 .btn {
+    margin-top: 10px;
     font-family: 'poppins', sans-serif;
     font-weight: 800;
-
     padding: 10px 24px;
     cursor: pointer;
     border: 2px solid var(--background);
@@ -151,7 +150,7 @@ body {
 
 .clearBtn {
     margin-right: 4px;
- 
+
 }
 
 .clearBtn:hover {
@@ -191,6 +190,11 @@ body {
     display: block;
 }
 
+.icon {
+    display: none;
+    font-size: 1.1rem;
+}
+
 .clipboard {
     padding: 10px 14px;
     border: none;
@@ -204,9 +208,8 @@ body {
     background-color: var(--accent);
 }
 
-.clipboard-icon {
-    font-size: 1.1rem;
-}
+
+
 
 @media screen and (max-width: 768px) {
     .header .text {

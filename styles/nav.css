@@ -1,6 +1,7 @@
 :root {
     --body-background: #e0f2fe;
     --text-secondary-color: #a1a1aa;
+    --nav-bg: #F0FAFF;
     --text-color: #fff;
     --background: #374150;
     --accent: #2790E9;
@@ -8,10 +9,11 @@
 }
 
 .nav-section {
+    background-color: var(--nav-bg);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     display: flex;
     justify-content: space-between;
-    padding: 6px 12rem;
+    padding: 12px 12rem 6px 12rem;
     margin: 0 auto;
 }
 

@@ -14,6 +14,8 @@ const chartResultContainer = document.querySelector(".chart-container");
 //initialize myChart to null 
 let myChart = null;
 
+
+
 //add click event listener for calculateBtn 
 calculateBtn.addEventListener("click", event => {
     event.preventDefault();
@@ -43,16 +45,12 @@ function calculate() {
 //display chart result
 function displayChartResult(arr) {
     const ctx = document.getElementById('myChart');
-    const frequencyMap = {};
 
     if (myChart) {
         myChart.destroy();
     }
 
-    arr.forEach(num => {
-        frequencyMap[num] = (frequencyMap[num] || 0) + 1;
-    });
-
+    //getting data
     const labels = Array.from({ length: arr.length }, (_, index) => (index + 1).toString());
     const data = [...arr];
 
@@ -63,8 +61,7 @@ function displayChartResult(arr) {
             datasets: [{
                 label: 'Number of data',
                 data: data,
-                borderWidth: 1,
-
+                borderWidth: 2,
 
             }]
         },
@@ -77,6 +74,7 @@ function displayChartResult(arr) {
                 }
             }
         }
+
     });
 
 }
@@ -86,7 +84,7 @@ function checkInput() {
 
     const errorMessage = document.getElementById("errorMessage");
     //this will converted into array
-    const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '');
+    const splitNumber = inputField.value.split(/[,.\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
     const validInputPattern = /^[,\d.\s]+$/
 
@@ -113,6 +111,10 @@ function checkInput() {
 
     return isValid;
 }
+
+
+
+
 //display the result
 function displayResult(splitNumberArr) {
     //clear the current result
@@ -122,18 +124,23 @@ function displayResult(splitNumberArr) {
 
     allResult.classList.add("result-container");
 
+    allResult.classList.add("skeleton-container");
+
     allResult.innerHTML = `
-    <div class="result-header-container">
-        <h1 class=''>Result:</h1>
-        <button class="clipboard" id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)"><i class="clipboard-icon fa-regular fa-clipboard"></i></button>
+    <div class="result-header-container skeleton-container">
+        <h1 class="skeleton">Result:</h1>
+        <button class="clipboard skeleton" id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
+            <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
+           
+        </button>
     </div>
-    <p class='text-result '>Mean: ${getMean(splitNumberArr)}</p>
-    <p class='text-result '>Median: ${getMedian(splitNumberArr)}</p>
-    <p class='text-result '>Mode: ${getMode(splitNumberArr)}</p>
-    <p class='text-result '>Range: ${getRange(splitNumberArr)}</p>
-    <p class='text-result '>Smallest: ${getMin(splitNumberArr)}</p>
-    <p class='text-result '>Largest: ${getMax(splitNumberArr)}</p>
-    <p class='text-result '>Count: ${getCount(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Mean: ${getMean(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Median: ${getMedian(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Mode: ${getMode(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Range: ${getRange(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Smallest: ${getMin(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Largest: ${getMax(splitNumberArr)}</p>
+    <p class='text-result skeleton'>Count: ${getCount(splitNumberArr)}</p>
     `;
     resultContainer.classList.add("show-result");
     resultContainer.appendChild(allResult);
@@ -148,12 +155,16 @@ function clearBtn() {
 }
 
 function copyClipboard(text) {
+
     const trimmedText = text.trim();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
+
+
 
     navigator.clipboard.writeText(`Datasets: ${splitNumber} ${trimmedText}`)
         .then(() => {
             alert("Text successfully copied!");
+
         })
         .catch(err => {
             console.err("Failed to copy text: ", err);
@@ -191,10 +202,10 @@ function getMode(nums) {
 
     for (let num in frequencyMap) {
         if (frequencyMap[num] > maxFrequency) {
-            mode = [parseFloat(num)];
+            mode = [parseInt(num)];
             maxFrequency = frequencyMap[num];
         } else if (frequencyMap[num] === maxFrequency) {
-            mode.push(parseFloat(num));
+            mode.push(parseInt(num));
         }
 
     }
