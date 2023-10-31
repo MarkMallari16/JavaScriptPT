@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function showSkeletonLoading() {
     skeletonElements.forEach(element => {
-        element.classList.remove("skeleton", "skeleton-input", "link-skeleton", "sub-text-skeleton", "text-skeleton", "skeleton-button", "chart-image-hide");
+        element.classList.remove("skeleton", "skeleton-input", "link-skeleton", "sub-text-skeleton", "text-skeleton", "skeleton-button", "image-hide");
     });
 }
 function removeSkeletonLoading() {

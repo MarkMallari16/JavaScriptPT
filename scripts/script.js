@@ -124,23 +124,6 @@ function displayResult(splitNumberArr) {
     //clear the current result
     resultContainer.innerHTML = '';
 
-
-    // const meanResult = document.createElement("div");
-    // meanResult.classList.add("result-container")
-    // meanResult.innerHTML = `
-    // <p>The mean of a data set is commonly known as the average. You find the mean by taking the sum of all the data values and dividing that sum by the total number of data values. The formula for the mean of a population is</p>
-    // <div class="result-header-container">
-
-    //     <p>Mean: ${getMean(splitNumberArr)}</p>
-    //     <button class="clipboard " id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
-    //             <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
-    //     </button>
-    // </div>`
-
-    // resultContainer.classList.add("show-result");
-    // resultContainer.appendChild(meanResult);
-
-
     const allResult = document.createElement("div");
 
     allResult.classList.add("result-container");
