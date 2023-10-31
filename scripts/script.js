@@ -123,11 +123,12 @@ function checkInput() {
 function displayResult(splitNumberArr) {
     //clear the current result
     resultContainer.innerHTML = '';
-
+    //loader
+   
     const allResult = document.createElement("div");
 
     allResult.classList.add("result-container");
-
+    
 
     allResult.innerHTML = `
     <div class="result-header-container ">
@@ -148,6 +149,8 @@ function displayResult(splitNumberArr) {
     `;
     resultContainer.classList.add("show-result");
     resultContainer.appendChild(allResult);
+
+
 }
 //this will clear all results and also in input
 function clearBtn() {
