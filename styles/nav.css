@@ -9,12 +9,12 @@
 }
 
 .nav-section {
-    
+    background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     display: flex;
     justify-content: space-between;
     padding: 12px 12rem 6px 12rem;
-    
+
 }
 
 .nav-header {
@@ -30,10 +30,12 @@ a {
     text-decoration: none;
     color: #000;
 }
-.active{
+
+.active {
     color: var(--accent) !important;
     font-weight: 700;
 }
+
 .logo-text {
     font-size: 2.3rem;
     text-transform: uppercase;
@@ -68,13 +70,20 @@ a {
     color: var(--accent);
 }
 
-.link-skeleton{
+.link-skeleton {
     user-select: none;
     cursor: default;
-    
+
+}
+@media screen and (max-width: 1024px){
+    .nav-section {
+        justify-content: space-between;
+  
+    }
 }
 @media screen and (max-width: 768px) {
     .nav-section {
-        padding: 14px 20px;
+        justify-content: space-around;
+        padding: 0.5rem 1.2rem;
     }
 }
