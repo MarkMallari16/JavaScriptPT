@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+   
 }
 
 @font-face {
@@ -57,7 +57,7 @@ body {
 
 .image {
     width: 100%;
-    filter: drop-shadow(9px 2px 1em var(--text-secondary-color));
+    /* filter: drop-shadow(9px 2px 1em var(--text-secondary-color)); */
 }
 
 .header-text {

@@ -124,12 +124,10 @@ function displayResult(splitNumberArr) {
     //clear the current result
     resultContainer.innerHTML = '';
     //loader
-   
     const allResult = document.createElement("div");
-
+    //adding class
     allResult.classList.add("result-container");
-    
-
+    //display result
     allResult.innerHTML = `
     <div class="result-header-container ">
         <h1>Result:</h1>
@@ -147,7 +145,9 @@ function displayResult(splitNumberArr) {
     <p class='text-result'>Largest: ${getMax(splitNumberArr)}</p>
     <p class='text-result'>Count: ${getCount(splitNumberArr)}</p>
     `;
+    //adding class
     resultContainer.classList.add("show-result");
+    //adding child to its parent resultContainer
     resultContainer.appendChild(allResult);
 
 
@@ -160,7 +160,7 @@ function clearBtn() {
     resultContainer.classList.remove("show-result");
     chartContainer.classList.remove("show-result");
 }
-
+//this function will copy the result text
 async function copyClipboard(text) {
     const trimmedText = text.trim();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
@@ -173,6 +173,7 @@ async function copyClipboard(text) {
         console.err("Failed to copy text: ", err);
     }
 }
+//getting mean
 function getMean(nums) {
     const sum = nums.reduce((acc, num) => acc + num, 0);
     const average = sum / nums.length;
@@ -181,7 +182,7 @@ function getMean(nums) {
 
     return formattedNums;
 }
-
+//getting median
 function getMedian(nums) {
     const sortedNums = nums.sort((num1, num2) => num1 - num2);
     const length = sortedNums.length;
@@ -191,6 +192,7 @@ function getMedian(nums) {
         (sortedNums[middleIndex - 1] + sortedNums[middleIndex]) / 2
         : sortedNums[middleIndex];
 }
+//getting mode
 function getMode(nums) {
     let frequencyMap = {};
     let maxFrequency = 0;
@@ -237,6 +239,7 @@ function getMode(nums) {
 
     // return mode.join(", ");
 }
+//getting range
 function getRange(nums) {
 
     const min = Math.min(...nums);
@@ -244,21 +247,25 @@ function getRange(nums) {
 
     return max - min;
 }
+//getting sum
 function getSum(nums) {
     let sum = nums.reduce((acc, num) => acc + num, 0);
 
     return sum;
 }
+//getting smallest number
 function getMin(nums) {
     const min = Math.min(...nums);
 
     return min;
 }
+//getting largest number
 function getMax(nums) {
     const max = Math.max(...nums);
 
     return max;
 }
+//getting length of numbers
 function getCount(nums) {
     const length = nums.length;
 
