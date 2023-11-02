@@ -9,6 +9,7 @@
     <!--styles-->
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/nav.css">
+    <link rel="stylesheet" href="styles/footer.css">
     <link rel="icon" href="assets/chart.png">
     <link rel="stylesheet" href="/styles/skeletonLoading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -18,7 +19,7 @@
 
 <body>
     <!--navigation-->
-    <nav class="nav-section skeleton-container">
+    <nav id="nav" class="nav-section skeleton-container">
         <div class="nav-header">
             <a href="/index.html" class="skeleton link-skeleton"> <img src="/assets/chart.png" alt="image"
                     class="logo skeleton  image-hide"></a>
@@ -72,13 +73,10 @@
                 <div class="button-container">
                     <button type="submit" class="btn calculateBtn skeleton skeleton-button "
                         id="calculateBtn">Calculate</button>
-                    <button type="submit" class="btn clearBtn skeleton skeleton-button " id="clearBtn"
-                        onclick="clearBtn()">Clear</button>
+
                 </div>
             </div>
         </div>
-        <div class="spinner"></div>
-
         <!--For result-->
         <div class="child result">
             <div class="result-header">
@@ -89,10 +87,17 @@
         <div class="child chart-container">
             <canvas class="myChart" id="myChart"></canvas>
         </div>
-        
+        <div class="button-container">
+            <button type="submit" class="btn clearBtn hide-button" id="clearBtn"
+                onclick="clearBtn()">Clear</button>
+        </div>
     </div>
-    <footer class="footer">
-        <p class="footer-text skeleton">Performance Task in Computer Programming</p>
+ 
+    <footer class="footer skeleton-container">
+
+        <div class="text skeleton">
+            <p>Performance Task in Computer Programming</p>
+        </div>
     </footer>
     <!--scripts-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

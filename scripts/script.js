@@ -1,11 +1,15 @@
 
+const navID = document.getElementById("nav");
 //getting the id of inputField
-let inputField = document.getElementById("inputField");
+const inputField = document.getElementById("inputField");
 //this will converted into array
 
 //getting the button of calculate
 const calculateBtn = document.getElementById("calculateBtn");
 //this will display all result 
+
+//getting the query of hide-button
+const buttonClear = document.querySelector(".hide-button");
 
 //getting the element class 
 const resultContainer = document.querySelector(".result");
@@ -13,8 +17,6 @@ const chartResultContainer = document.querySelector(".chart-container");
 
 //initialize myChart to null 
 let myChart = null;
-
-
 
 //add click event listener for calculateBtn 
 calculateBtn.addEventListener("click", event => {
@@ -34,12 +36,12 @@ function handleEnterKeyEvent(event) {
 function calculate() {
     const isValid = checkInput();
     const splitNumbers = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
-
-
     if (isValid) {
+
         displayResult(splitNumbers);
         displayChartResult(splitNumbers);
         chartResultContainer.classList.add("show-result");
+        scroll(resultContainer);
     }
 
 }
@@ -87,7 +89,7 @@ function checkInput() {
     //this will converted into array
     const splitNumbers = inputField.value.split(/[,\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
-    const validInputPattern = /^[,\d.\s]+$/
+    const validInputPattern = /^[\d,\s]+$/
 
     const validNumbers = splitNumbers.filter(num => !isNaN(num));
 
@@ -121,6 +123,7 @@ function checkInput() {
 
 //display the result
 function displayResult(splitNumberArr) {
+
     //clear the current result
     resultContainer.innerHTML = '';
     //loader
@@ -148,17 +151,22 @@ function displayResult(splitNumberArr) {
     //adding class
     resultContainer.classList.add("show-result");
     //adding child to its parent resultContainer
-    resultContainer.appendChild(allResult);
 
+    resultContainer.appendChild(allResult);
+    buttonClear.classList.remove("hide-button");
 
 }
 //this will clear all results and also in input
 function clearBtn() {
     const chartContainer = document.querySelector(".chart-container");
-
     inputField.value = "";
-    resultContainer.classList.remove("show-result");
-    chartContainer.classList.remove("show-result");
+    setTimeout(() => {
+
+        resultContainer.classList.remove("show-result");
+        chartContainer.classList.remove("show-result");
+        buttonClear.classList.add("hide-button");
+    }, 500);
+    scroll(navID);
 }
 //this function will copy the result text
 async function copyClipboard(text) {
@@ -172,6 +180,10 @@ async function copyClipboard(text) {
     } catch (err) {
         console.err("Failed to copy text: ", err);
     }
+}
+//scroll to specified element
+function scroll(element) {
+    element.scrollIntoView();
 }
 //getting mean
 function getMean(nums) {
