@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="/styles/skeletonLoading.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="styles/spinner.css">
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -62,7 +63,7 @@
                     <label for="inputField" class="skeleton text-skeleton ">Enter Data</label>
                     <div class="field-sub-text  skeleton text-skeleton ">Please provide numbers
                         separated by comma or space to
-                        calculate. Maximum: 20</div>
+                        calculate. Maximum: <span class="highlighted-text skeleton">20</span></div>
                     <div class="invalid-input" id="errorMessage"></div>
 
                     <div>
@@ -88,16 +89,89 @@
             <canvas class="myChart" id="myChart"></canvas>
         </div>
         <div class="button-container">
-            <button type="submit" class="btn clearBtn hide-button" id="clearBtn"
-                onclick="clearBtn()">Clear</button>
+            <button type="submit" class="btn clearBtn hide-button" id="clearBtn" onclick="clearBtn()">Clear</button>
+        </div>
+
+    </div>
+    <div class="description-container">
+        <div class="description skeleton-container">
+            <h2 class="description-header skeleton">Mean</h2>
+            <span class="description-text skeleton">
+                The word mean, which is a homonym for multiple other words in the English language, is similarly
+                ambiguous even in the area of mathematics. Depending on the context, whether mathematical or
+                statistical, what is meant by the "mean" changes. In its simplest mathematical definition regarding
+                data
+                sets, the mean used is the arithmetic mean, also referred to as mathematical expectation, or
+                average. In
+                this form, the mean refers to an intermediate value between a discrete set of numbers, namely, the
+                sum
+                of all values in the data set, divided by the total number of values. The equation for calculating
+                the
+                arithmetic mean is virtually identical to that for calculating the statistical concepts of
+                population
+                and sample mean, with slight variations in the variables used:
+            </span>
+            <span class="description-formula skeleton">
+
+                \[
+                \text{Mean} = \frac{x_1 + x_2 + \ldots + x_n}{n} = \frac{\sum_{i=1}^{n} x_i}{n}
+                \]
+            </span>
+            <span class="description-formula skeleton">
+
+                \[
+                = \frac{10 + 2 + 38 + 23 + 38 + 23 + 21}{7} = \frac{155}{7} = 22.143
+                \]
+            </span>
+
+        </div>
+        <div class="description skeleton-container">
+            <h2 class="description-header skeleton">Median</h2>
+            <span class="description-text skeleton">
+                The median is another measure of central tendency. To find the median, the dataset is first sorted in
+                ascending order. If the dataset has an odd number of observations, the median is the middle number. If
+                the dataset has an even number of observations, the median is the average of the two middle numbers. The
+                median is useful because it is not affected by extreme values.
+            </span>
+            <div class="description-formula skeleton">
+                <p>\[ 1, 2, 3, \text{{4}}, 5, 6, 7 \]
+                </p>
+            </div>
+        </div>
+        <div class="description skeleton-container">
+            <h2 class="description-header skeleton">Mode</h2>
+            <span class="description-text skeleton">The mode is the number that appears most frequently in a dataset. A
+                dataset
+                can have one mode, more than one mode (multimodal), or no mode at all if all numbers occur with equal
+                frequency. The mode represents the most common value and is especially useful for categorical
+                data.</span>
+            <div class="description-formula skeleton">
+                <p>\[ 1, 2, 3, \text{{4}}, \text{{4}}, 6, 7 \]
+                </p>
+            </div>
+        </div>
+        <div class="description skeleton-container">
+            <h2 class="description-header skeleton">Range</h2>
+            <span class="description-text skeleton">The range is the difference between the maximum and minimum values
+                in a
+                dataset. It measures the spread or dispersion of the data. To calculate the range, subtract the minimum
+                value from the maximum value. A larger range indicates a greater variability in the dataset.
+            </span>
+            <span class="description-formula skeleton">\[range = \text{Maximum Value} - \text{Minimum Value}\]</span>
+            <span class="description-formula skeleton">\[= \text{8} - \text{1} = 7\]</span>
         </div>
     </div>
- 
+    <!--footer-->
     <footer class="footer skeleton-container">
-
-        <div class="text skeleton">
+        <div class="footer-text">
             <p>Performance Task in Computer Programming</p>
         </div>
+        <svg class="skeleton" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#374150" fill-opacity="1"
+                d="M0,288L0,128L360,128L360,64L720,64L720,160L1080,160L1080,192L1440,192L1440,320L1080,320L1080,320L720,320L720,320L360,320L360,320L0,320L0,320Z">
+            </path>
+        </svg>
+
     </footer>
     <!--scripts-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

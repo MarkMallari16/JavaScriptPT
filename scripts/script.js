@@ -1,4 +1,4 @@
-
+//getting the nav element id
 const navID = document.getElementById("nav");
 //getting the id of inputField
 const inputField = document.getElementById("inputField");
@@ -83,14 +83,13 @@ function displayChartResult(arr) {
 }
 //check possible errors
 function checkInput() {
-    //getting the error message element
-
+    //getting the error message element 
     const errorMessage = document.getElementById("errorMessage");
     //this will converted into array
     const splitNumbers = inputField.value.split(/[,\s]+/).filter(num => num !== '');
     //this will check the valid input pattern
     const validInputPattern = /^[\d,\s]+$/
-
+    //filtering only numbers remove unneccessary text
     const validNumbers = splitNumbers.filter(num => !isNaN(num));
 
     let isValid = true;
@@ -104,8 +103,8 @@ function checkInput() {
         errorMessage.textContent = "Invalid input! Please provide number only.";
         errorMessage.classList.add("show-error");
         isValid = false;
-    } else if (validNumbers.length > 30) {
-        errorMessage.textContent = "Maximum of 30 sets of numbers are allowed.";
+    } else if (validNumbers.length > 20) {
+        errorMessage.textContent = "Maximum of 20 sets of numbers are allowed.";
         errorMessage.classList.add("show-error");
         isValid = false;
     } else if (validNumbers.length < 2) {
@@ -123,7 +122,6 @@ function checkInput() {
 
 //display the result
 function displayResult(splitNumberArr) {
-
     //clear the current result
     resultContainer.innerHTML = '';
     //loader
@@ -161,14 +159,14 @@ function clearBtn() {
     const chartContainer = document.querySelector(".chart-container");
     inputField.value = "";
     setTimeout(() => {
-
         resultContainer.classList.remove("show-result");
         chartContainer.classList.remove("show-result");
         buttonClear.classList.add("hide-button");
     }, 500);
+
     scroll(navID);
 }
-//this function will copy the result text
+//this function will copy the result text 
 async function copyClipboard(text) {
     const trimmedText = text.trim();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));

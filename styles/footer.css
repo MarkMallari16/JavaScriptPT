@@ -1,8 +1,32 @@
-
 .footer {
-    margin-top: 10px;
+
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
     color: var(--text-secondary-color);
     font-weight: 300;
     text-align: center;
+    background-color: #e0f2fe;
+
 }
 
+.footer-text {
+    text-align: end;
+    padding: 10px 20px;
+    z-index: 1;
+}
+
+.footer svg {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-width:768px) {
+    .footer-text {
+      
+        text-align: center;
+    }
+}

@@ -4,11 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   
+
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
+
 @font-face {
     font-family: NewakeFont;
     src: url(/fonts/NewakeFont-Demo.woff);
@@ -27,22 +29,19 @@ html{
 }
 
 body {
-
     background-color: var(--body-background);
     font-family: var(--text-font) !important;
 }
 
 .container {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .hero-section {
-    padding: 40px !important;
+    padding: 40px;
     display: flex;
     justify-content: center;
     color: var(--text-color);
@@ -54,8 +53,7 @@ body {
     display: flex;
     align-items: center;
     gap: 40px;
-    margin-bottom: 0;
-    
+    padding: 20px;
 }
 
 .image {
@@ -72,7 +70,7 @@ body {
 
 }
 
-.sub-text{
+.sub-text {
     width: 80%;
     margin-top: 6px;
     display: block;
@@ -80,12 +78,14 @@ body {
     font-size: clamp(0.875rem, 0.7188rem + 0.5vw, 1rem);
 }
 
-.field-sub-text{
+.field-sub-text {
     width: 100%;
     font-weight: 300;
 }
 
-.child {
+
+.child,
+.description {
     position: relative;
     margin-top: 40px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -99,7 +99,6 @@ body {
 
 
 .child2 {
-   
     display: flex;
     flex-direction: column;
 }
@@ -110,6 +109,7 @@ body {
     margin-bottom: 12px;
     width: 60%;
 }
+
 
 .input-section {
     position: relative;
@@ -176,9 +176,10 @@ body {
     background-color: var(--background);
 }
 
-.hide-button{
+.hide-button {
     display: none;
 }
+
 .result {
     display: none;
     padding: 24px;
@@ -227,7 +228,37 @@ body {
     background-color: var(--accent);
 }
 
+.description-container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
+
+.description {
+
+    padding: 30px;
+    margin-top: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #fff;
+}
+
+.description-header {
+    margin-bottom: 12px;
+}
+
+.description-text {
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.description-formula {
+    font-size: clamp(0.875rem, 0.5625rem + 1vw, 1.125rem);
+    margin-top: 20px;
+    text-align: center;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -236,7 +267,7 @@ body {
         font-size: 2.5rem;
         text-align: center;
     }
-    
+
     .sub-text {
         width: 100%;
         text-align: center;
@@ -254,7 +285,7 @@ body {
         justify-content: center;
         flex-direction: column;
     }
-   
+
     .image {
         width: 100%;
 
@@ -269,4 +300,9 @@ body {
     .chart-container {
         padding: 20px;
     }
+
+    .description-container {
+        padding: 0;
+    }
+
 }
