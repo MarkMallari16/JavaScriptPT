@@ -2,10 +2,8 @@ const skeletonElements = document.querySelectorAll(".skeleton");
 const skeletonElementsContainer = document.querySelectorAll(".skeleton-container");
 
 document.addEventListener("DOMContentLoaded", () => {
-
-
     setTimeout(() => {
-        // Remove the "skeleton" class after elements are shown
+    
         showSkeletonLoading();
         removeSkeletonLoading();
 

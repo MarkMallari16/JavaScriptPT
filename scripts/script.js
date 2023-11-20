@@ -18,10 +18,9 @@ const chartResultContainer = document.querySelector(".chart-container");
 //initialize myChart to null 
 let myChart = null;
 
-//add click event listener for calculateBtn 
+//add a click event listener for calculateBtn 
 calculateBtn.addEventListener("click", event => {
     event.preventDefault();
-    console.log("click");
     calculate();
 
 })
@@ -134,7 +133,6 @@ function displayResult(splitNumberArr) {
         <h1>Result:</h1>
         <button class="clipboard " id="clipboard" onclick="copyClipboard(document.querySelector('.result-container').textContent)">
             <i class="icon clipboard-icon  fa-regular fa-clipboard"></i>
-
         </button>
     </div>
     <p class='text-result'>Mean: ${getMean(splitNumberArr)}</p>
@@ -166,7 +164,7 @@ function clearBtn() {
 
     scroll(navID);
 }
-//this function will copy the result text 
+//this function will copy the result of each.
 async function copyClipboard(text) {
     const trimmedText = text.trim();
     const splitNumber = inputField.value.split(/[,\s]+/).filter(num => num !== '').map(num => parseFloat(num));
@@ -228,26 +226,7 @@ function getMode(nums) {
         return "No mode"
     }
     return mode.join(", ");
-    // nums.forEach(num => {
-    //     frequencyMap[num] = (frequencyMap[num] || 0) + 1;
-    // });
 
-    // let mode = [];
-    // let maxFrequency = 0;
-
-    // for (let num in frequencyMap) {
-    //     if (frequencyMap[num] > maxFrequency) {
-    //         mode = [parseInt(num)];
-    //         maxFrequency = frequencyMap[num];
-    //     } else if (frequencyMap[num] === maxFrequency) {
-    //         mode.push(parseInt(num));
-    //     }
-    // }
-    // if (mode.length === Object.keys(frequencyMap).length) {
-    //     return "No mode";
-    // }
-
-    // return mode.join(", ");
 }
 //getting range
 function getRange(nums) {
